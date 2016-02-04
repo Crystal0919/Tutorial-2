@@ -1,0 +1,13 @@
+
+```{r}
+library (ggplot2)
+library (dplyr)
+labs <- read.csv("~/Documents/IS4250/Tutorial 2/labs.csv")
+
+labs %>% filter(SvcSat =="Y") %>% select(WaitTime) %>% summarise_each(funs(mean))
+ggplot(labs, aes(WaitTime)) + geom_bar()
+
+ggplot(labs, aes(WaitTime, SvcSat)) + stat_bin_2d(bins = 30, drop = TRUE)
+
+dplyr::mutate(labs, BMI=WT/(HT*HT))
+```
